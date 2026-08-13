@@ -576,7 +576,7 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
 <!-- ========== 배경음악 ========== -->
 <!-- 음악 파일은 music/bgm.mp3 에 넣어주세요. 파일명을 바꾸려면 아래 CONFIG.bgm 수정 -->
 <audio id="bgm" loop preload="none"></audio>
-<button id="bgm-btn" class="bgm-btn off" type="button" aria-label="배경음악 켜기/끄기" aria-pressed="false" hidden>
+<button id="bgm-btn" class="bgm-btn" type="button" aria-label="배경음악 켜기/끄기" aria-pressed="true" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M9 17V4l11-2v13" />
     <circle cx="6" cy="17" r="3" />
@@ -598,7 +598,9 @@ const CONFIG = {
   venue: '신도림 라마다호텔 5층 세인트그레이스홀',
   dateText: '2027년 7월 10일 토요일 오후 1시 40분',
   kakaoJsKey: '',                            // 카카오 JS 키 (선택, README 참고)
-  bgm: 'music/bgm.mp3',                      // 배경음악 파일 (없으면 '' 로 두면 버튼이 안 보입니다)
+  // 배경음악 파일 (없으면 '' 로 두면 버튼이 안 보입니다)
+  // Invitation Wedding — leberch / Pixabay Content License
+  bgm: 'music/leberch-invitation-wedding-375839.mp3',
   bgmVolume: 0.35,                           // 음량 0 ~ 1
 };
 
@@ -723,18 +725,22 @@ document.getElementById('btn-kakao').addEventListener('click', () => {
   // 파일이 없거나 재생할 수 없는 형식이면 버튼을 숨깁니다
   audio.addEventListener('error', () => { btn.hidden = true; });
 
-  let userPaused = false;                    // 사용자가 직접 껐는지
+  // 기본값 = 켜짐. 하객이 버튼으로 직접 끄기 전까지는 계속 '켜짐' 상태로 봅니다.
+  // (자동재생이 막혀 아직 소리가 안 날 때도 버튼은 '켜짐'으로 보입니다)
+  let wantPlay = true;
 
-  function sync(playing) {
-    btn.classList.toggle('playing', playing);
-    btn.classList.toggle('off', !playing);
-    btn.setAttribute('aria-pressed', String(playing));
+  function render() {
+    const sounding = wantPlay && !audio.paused;
+    btn.classList.toggle('playing', sounding);   // 소리가 나는 중 → 은은한 맥박
+    btn.classList.toggle('off', !wantPlay);      // 하객이 직접 끈 경우만 빗금
+    btn.setAttribute('aria-pressed', String(wantPlay));
   }
-  audio.addEventListener('play',  () => sync(true));
-  audio.addEventListener('pause', () => sync(false));
+  audio.addEventListener('play',  render);
+  audio.addEventListener('pause', render);
+  render();
 
   function tryPlay() {
-    if (userPaused) return Promise.resolve();
+    if (!wantPlay) return Promise.resolve();
     return audio.play().catch(() => {});     // 자동재생 차단은 조용히 무시
   }
 
@@ -742,24 +748,25 @@ document.getElementById('btn-kakao').addEventListener('click', () => {
   tryPlay();
 
   // ② 차단됐을 경우 — 첫 상호작용에서 한 번만 재생
-  const kick = () => {
+  const EVENTS = ['pointerdown', 'touchstart', 'keydown', 'scroll'];
+  function kick(e) {
+    EVENTS.forEach((ev) => window.removeEventListener(ev, kick));
+    // 첫 상호작용이 음악 버튼 탭이었다면 버튼 핸들러에 맡깁니다
+    // (여기서 먼저 재생해 버리면 버튼이 곧바로 '끄기'로 동작해 버립니다)
+    if (e && e.target && e.target.closest && e.target.closest('#bgm-btn')) return;
     if (audio.paused) tryPlay();
-    ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach((ev) =>
-      window.removeEventListener(ev, kick)
-    );
-  };
-  ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach((ev) =>
-    window.addEventListener(ev, kick, { once: true, passive: true })
-  );
+  }
+  EVENTS.forEach((ev) => window.addEventListener(ev, kick, { passive: true }));
 
   // 버튼으로 켜고 끄기
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (audio.paused) { userPaused = false; tryPlay(); }
-    else { userPaused = true; audio.pause(); }
+    wantPlay = !wantPlay;
+    if (wantPlay) tryPlay(); else audio.pause();
+    render();
   });
 
-  // 다른 탭으로 가면 잠시 멈춤 (돌아오면 다시 재생)
+  // 다른 탭으로 가면 잠시 멈춤 (돌아오면 다시 재생) — '켜짐/꺼짐' 상태는 그대로 유지
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) audio.pause();
     else tryPlay();
