@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>김민준 ♥ 이서연 결혼합니다</title>
+<title>최영우 ♥ 장수린 결혼합니다</title>
+
+<!-- ===== 검색엔진 색인 차단 =====
+     연락처·사진이 검색 결과에 노출되지 않도록 막습니다.
+     링크를 받은 하객은 그대로 접속할 수 있고, 카카오톡 공유 미리보기도 정상 동작합니다. -->
+<meta name="robots" content="noindex, nofollow, noimageindex, noarchive" />
+<meta name="googlebot" content="noindex, nofollow, noimageindex, noarchive" />
 
 <!-- ===== 카카오톡/SNS 공유 미리보기 (og 태그) ===== -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="김민준 ♥ 이서연 결혼합니다" />
-<meta property="og:description" content="2026년 11월 7일 토요일 오후 1시 · 그랜드홀 웨딩홀 3층" />
+<meta property="og:title" content="최영우 ♥ 장수린 결혼합니다" />
+<meta property="og:description" content="2027년 7월 10일 토요일 오후 1시 40분 · 신도림 라마다호텔 5층 세인트그레이스홀" />
 <meta property="og:image" content="https://shuobyian.github.io/wedding-invitation/images/og.jpg" />
 <meta property="og:url" content="https://shuobyian.github.io/wedding-invitation/" />
-<meta name="theme-color" content="#faf8f5" />
+<meta name="theme-color" content="#f6f4fd" />
 <script>document.documentElement.classList.add('js');</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,20 +29,22 @@
    1. 디자인 토큰 — 색/폰트만 바꾸면 전체 분위기가 바뀝니다
    ============================================================ */
 :root {
-  --bg:        #faf8f5;   /* 배경 아이보리 */
-  --bg-alt:    #f2ede6;   /* 섹션 구분 배경 */
-  --ink:       #33302c;   /* 본문 텍스트 */
-  --ink-soft:  #7d766d;   /* 보조 텍스트 */
-  --line:      #e2dbd1;   /* 구분선 */
-  --point:     #a8836a;   /* 포인트 (브라운) */
-  --point-soft:#c9a98f;
+  --bg:        #f7f5fd;   /* 배경 연보라 */
+  --bg-alt:    #eaf3f6;   /* 섹션 구분 배경 (연하늘·민트) */
+  --ink:       #2f2b3d;   /* 본문 텍스트 */
+  --ink-soft:  #78738d;   /* 보조 텍스트 */
+  --line:      #e3ddf1;   /* 구분선 */
+  --point:     #8a6fd4;   /* 포인트 (보라) */
+  --point-soft:#b6a4e6;
+  --mint:      #5ec9b3;   /* 민트 */
+  --sky:       #6bb2e8;   /* 하늘 */
   --white:     #ffffff;
 
   --serif: 'Gowun Batang', serif;
   --sans:  'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --radius: 14px;
-  --shadow: 0 6px 24px rgba(80, 65, 50, .10);
+  --shadow: 0 6px 24px rgba(90, 70, 150, .12);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -44,7 +52,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #ded7cd;               /* 데스크톱에서 카드 바깥 여백 색 */
+  background: #d7d0ec;               /* 데스크톱에서 카드 바깥 여백 색 */
   font-family: var(--sans);
   color: var(--ink);
   line-height: 1.75;
@@ -111,12 +119,11 @@ html.js .reveal.on { opacity: 1; transform: none; }
 }
 .cover-photo {
   position: absolute; inset: 0;
-  background: linear-gradient(160deg, #d9cec2 0%, #bfae9c 45%, #8f7f70 100%);
+  /* 커버 사진 (웹용 1500×2000, 원본은 images/original/main.jpg) */
+  background-image: url('images/main.jpg'), linear-gradient(160deg, #b7a6e6 0%, #8fb8ea 52%, #74d1c0 100%);
   background-size: cover;
   background-position: center;
 }
-/* 실제 사진을 넣을 때:
-   .cover-photo { background-image: url('images/main.jpg'); } */
 .cover-photo::after {
   content: '';
   position: absolute; inset: 0;
@@ -153,7 +160,7 @@ html.js .reveal.on { opacity: 1; transform: none; }
   font-size: 17px; line-height: 2.1; color: var(--ink-soft); margin-bottom: 34px;
 }
 .greeting .msg { font-size: 15px; line-height: 2.1; color: var(--ink); font-weight: 300; }
-.divider { width: 40px; height: 1px; background: var(--point-soft); margin: 36px auto; }
+.divider { width: 44px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--point), var(--sky), var(--mint)); margin: 36px auto; }
 
 .parents { font-size: 15px; line-height: 2.4; }
 .parents b { font-weight: 500; }
@@ -191,7 +198,7 @@ html.js .reveal.on { opacity: 1; transform: none; }
 }
 .gallery::-webkit-scrollbar { display: none; }
 .gallery figure {
-  flex: 0 0 74%; aspect-ratio: 3/4;
+  flex: 0 0 74%; aspect-ratio: 3/4;   /* 사진이 세로형(1200×1600) */
   scroll-snap-align: center;
   border-radius: var(--radius); overflow: hidden;
   background: var(--bg-alt); cursor: zoom-in;
@@ -224,7 +231,7 @@ html.js .reveal.on { opacity: 1; transform: none; }
   font-size: 12px; font-weight: 500; color: var(--ink-soft);
   padding-bottom: 12px; letter-spacing: .05em;
 }
-.cal th:first-child, .cal td:first-child { color: #c0705f; }
+.cal th:first-child, .cal td:first-child { color: #d98aa8; }
 .cal td { font-size: 14px; padding: 7px 0; color: var(--ink); font-weight: 300; }
 .cal td.wed {
   position: relative; z-index: 0;   /* 자체 쌓임 맥락 → ::before 원이 카드 뒤로 숨지 않도록 */
@@ -234,7 +241,7 @@ html.js .reveal.on { opacity: 1; transform: none; }
   content: ''; position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   width: 32px; height: 32px; border-radius: 50%;
-  background: var(--point); z-index: -1;
+  background: linear-gradient(140deg, var(--point), var(--sky)); z-index: -1;
 }
 .cal td.wed span { position: relative; z-index: 1; }
 .dday {
@@ -314,6 +321,36 @@ footer {
 }
 footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
 
+/* ============================================================
+   10. 배경음악 버튼
+   ============================================================ */
+.bgm-btn {
+  position: fixed; top: 16px; z-index: 90;
+  /* 데스크톱에서는 카드(460px) 오른쪽 안쪽에, 모바일에서는 화면 오른쪽에 붙습니다 */
+  left: min(calc(50% + 216px), calc(100% - 14px));
+  transform: translateX(-100%);
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(255,255,255,.82);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--point); cursor: pointer;
+  display: grid; place-items: center;
+  box-shadow: 0 4px 14px rgba(90,70,150,.16);
+  transition: opacity .3s, background .2s;
+}
+.bgm-btn svg { width: 19px; height: 19px; }
+.bgm-btn:active { background: var(--bg-alt); }
+/* 재생 중일 때 은은한 맥박 */
+.bgm-btn.playing svg { animation: bgm-pulse 2.4s ease-in-out infinite; }
+@keyframes bgm-pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+/* 꺼져 있을 때 대각선 빗금 */
+.bgm-btn.off { color: var(--ink-soft); }
+.bgm-btn.off::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 22px; height: 1.5px; background: currentColor;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+@media (prefers-reduced-motion: reduce) { .bgm-btn.playing svg { animation: none; } }
+
 /* 토스트 */
 #toast {
   position: fixed; bottom: 34px; left: 50%; transform: translateX(-50%) translateY(20px);
@@ -323,13 +360,6 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
 }
 #toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* 이미지 자리표시자(사진 넣기 전) */
-.ph { display: grid; place-items: center; height: 100%; color: #fff; font-size: 13px; letter-spacing: .1em; }
-.ph1 { background: linear-gradient(150deg,#d3c6b8,#a89684); }
-.ph2 { background: linear-gradient(150deg,#c9bfae,#9d907e); }
-.ph3 { background: linear-gradient(150deg,#ddd0c0,#b5a48f); }
-.ph4 { background: linear-gradient(150deg,#c4b6a6,#95836f); }
-.ph5 { background: linear-gradient(150deg,#e0d5c6,#ab9b88); }
 </style>
 </head>
 
@@ -341,8 +371,8 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <div class="cover-photo"></div>
     <div class="cover-inner">
       <p class="cover-sub">WE ARE GETTING MARRIED</p>
-      <h1 class="cover-names">김민준 <span>&</span> 이서연</h1>
-      <p class="cover-date">2026. 11. 07. SAT PM 1:00<br />그랜드홀 웨딩홀 3층 그랜드볼룸</p>
+      <h1 class="cover-names">최영우 <span>&</span> 장수린</h1>
+      <p class="cover-date">2027. 07. 10. SAT PM 1:40<br />신도림 라마다호텔 5층 세인트그레이스홀</p>
     </div>
     <div class="scroll-hint"></div>
   </header>
@@ -366,8 +396,8 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <div class="divider"></div>
 
     <p class="parents">
-      <b>김철수 · 박영희</b><span class="rel">의 아들</span><b>민준</b><br />
-      <b>이정호 · 최수미</b><span class="rel">의 딸</span><b>서연</b>
+      <b>최종수 · 황경애</b><span class="rel">의 아들</span><b>영우</b><br />
+      <b>장상화 · 어정녀</b><span class="rel">의 딸</span><b>수린</b>
     </p>
   </section>
 
@@ -377,31 +407,45 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <h2 class="headline">연락하기</h2>
     <div class="contact-list">
       <div class="contact-row">
-        <p class="who"><small>신랑</small>김민준</p>
+        <p class="who"><small>신랑</small>최영우</p>
         <div class="contact-btns">
-          <a class="icon-btn" href="tel:010-1234-5678" aria-label="신랑에게 전화">📞</a>
-          <a class="icon-btn" href="sms:010-1234-5678" aria-label="신랑에게 문자">✉️</a>
+          <a class="icon-btn" href="tel:010-4113-5727" aria-label="신랑에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-4113-5727" aria-label="신랑에게 문자">✉️</a>
         </div>
       </div>
       <div class="contact-row">
-        <p class="who"><small>신부</small>이서연</p>
+        <p class="who"><small>신부</small>장수린</p>
         <div class="contact-btns">
-          <a class="icon-btn" href="tel:010-8765-4321" aria-label="신부에게 전화">📞</a>
-          <a class="icon-btn" href="sms:010-8765-4321" aria-label="신부에게 문자">✉️</a>
+          <a class="icon-btn" href="tel:010-4922-6114" aria-label="신부에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-4922-6114" aria-label="신부에게 문자">✉️</a>
         </div>
       </div>
       <div class="contact-row">
-        <p class="who"><small>신랑 혼주</small>김철수 · 박영희</p>
+        <p class="who"><small>신랑 아버지</small>최종수</p>
         <div class="contact-btns">
-          <a class="icon-btn" href="tel:010-1111-2222" aria-label="신랑 혼주에게 전화">📞</a>
-          <a class="icon-btn" href="sms:010-1111-2222" aria-label="신랑 혼주에게 문자">✉️</a>
+          <a class="icon-btn" href="tel:010-6436-4127" aria-label="신랑 아버지에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-6436-4127" aria-label="신랑 아버지에게 문자">✉️</a>
         </div>
       </div>
       <div class="contact-row">
-        <p class="who"><small>신부 혼주</small>이정호 · 최수미</p>
+        <p class="who"><small>신랑 어머니</small>황경애</p>
         <div class="contact-btns">
-          <a class="icon-btn" href="tel:010-3333-4444" aria-label="신부 혼주에게 전화">📞</a>
-          <a class="icon-btn" href="sms:010-3333-4444" aria-label="신부 혼주에게 문자">✉️</a>
+          <a class="icon-btn" href="tel:010-9383-8152" aria-label="신랑 어머니에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-9383-8152" aria-label="신랑 어머니에게 문자">✉️</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <p class="who"><small>신부 아버지</small>장상화</p>
+        <div class="contact-btns">
+          <a class="icon-btn" href="tel:010-6239-6114" aria-label="신부 아버지에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-6239-6114" aria-label="신부 아버지에게 문자">✉️</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <p class="who"><small>신부 어머니</small>어정녀</p>
+        <div class="contact-btns">
+          <a class="icon-btn" href="tel:010-2089-6114" aria-label="신부 어머니에게 전화">📞</a>
+          <a class="icon-btn" href="sms:010-2089-6114" aria-label="신부 어머니에게 문자">✉️</a>
         </div>
       </div>
     </div>
@@ -412,12 +456,12 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <p class="label">Gallery</p>
     <h2 class="headline">우리의 순간</h2>
     <div class="gallery" id="gallery">
-      <!-- 사진을 넣을 때는 아래 <div class="ph …"> 를 <img src="images/1.jpg" alt=""> 로 교체하세요 -->
-      <figure><div class="ph ph1">PHOTO 1</div></figure>
-      <figure><div class="ph ph2">PHOTO 2</div></figure>
-      <figure><div class="ph ph3">PHOTO 3</div></figure>
-      <figure><div class="ph ph4">PHOTO 4</div></figure>
-      <figure><div class="ph ph5">PHOTO 5</div></figure>
+      <!-- 웹용 사진(1200×1600). 원본은 images/original/ 에 보관. 순서는 아래 <figure> 순서대로 -->
+      <figure><img src="images/gallery/20260706_151742.jpg" alt="웨딩 사진 1" loading="lazy" /></figure>
+      <figure><img src="images/gallery/20260707_131332.jpg" alt="웨딩 사진 2" loading="lazy" /></figure>
+      <figure><img src="images/gallery/20260707_133740.jpg" alt="웨딩 사진 3" loading="lazy" /></figure>
+      <figure><img src="images/gallery/20260707_142642.jpg" alt="웨딩 사진 4" loading="lazy" /></figure>
+      <figure><img src="images/gallery/20260707_152309.jpg" alt="웨딩 사진 5" loading="lazy" /></figure>
     </div>
     <p class="gallery-hint">← 좌우로 밀어서 넘겨보세요 →</p>
   </section>
@@ -425,7 +469,7 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
   <!-- ========== 캘린더 ========== -->
   <section class="alt reveal">
     <p class="label">Save the Date</p>
-    <h2 class="headline">2026년 11월 7일 토요일 오후 1시</h2>
+    <h2 class="headline">2027년 7월 10일 토요일 오후 1시 40분</h2>
     <div class="cal">
       <div id="calendar"></div>
       <p class="dday" id="dday"></p>
@@ -436,28 +480,33 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
   <section class="venue reveal">
     <p class="label">Location</p>
     <h2 class="headline">오시는 길</h2>
-    <h3>그랜드홀 웨딩홀 3층 그랜드볼룸</h3>
-    <p class="addr">서울특별시 강남구 테헤란로 123</p>
-    <p class="tel">02-1234-5678</p>
+    <h3>신도림 라마다호텔 5층 세인트그레이스홀</h3>
+    <p class="addr">서울특별시 구로구 신도림동 427-3<br />(도로명: 구로구 경인로 624)</p>
+    <p class="tel"><a href="tel:02-2162-2000" style="color:inherit;text-decoration:none;">02-2162-2000</a></p>
 
     <div class="map-embed" id="map">
-      <!-- 카카오맵/네이버지도 임베드 iframe 을 여기에 붙여넣으세요 -->
-      지도 영역 (README의 지도 설정 참고)
+      <!-- API 키 없이 동작하는 구글맵 임베드입니다. 카카오맵/네이버지도로 바꾸려면 README 참고 -->
+      <iframe
+        src="https://maps.google.com/maps?q=%EB%9D%BC%EB%A7%88%EB%8B%A4%EC%84%9C%EC%9A%B8%EC%8B%A0%EB%8F%84%EB%A6%BC%ED%98%B8%ED%85%94&z=17&hl=ko&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="라마다서울신도림호텔 지도"></iframe>
     </div>
 
     <div class="map-links">
-      <a href="https://map.naver.com/p/search/그랜드홀%20웨딩홀" target="_blank" rel="noopener">네이버지도</a>
-      <a href="https://map.kakao.com/link/search/그랜드홀 웨딩홀" target="_blank" rel="noopener">카카오맵</a>
-      <a href="https://tmap.life/route?goalname=그랜드홀 웨딩홀" target="_blank" rel="noopener">티맵</a>
+      <a href="https://map.naver.com/p/search/라마다서울신도림호텔" target="_blank" rel="noopener">네이버지도</a>
+      <a href="https://map.kakao.com/link/search/라마다서울신도림호텔" target="_blank" rel="noopener">카카오맵</a>
+      <a href="https://tmap.life/route?goalname=라마다서울신도림호텔" target="_blank" rel="noopener">티맵</a>
     </div>
 
     <dl class="transport">
       <dt>지하철</dt>
-      <dd>2호선 강남역 3번 출구에서 도보 5분<br />신분당선 강남역 5번 출구에서 도보 7분</dd>
+      <dd>1 · 2호선 신도림역 1번 출구<br />신도림역 광장 방면 도보 5분</dd>
+      <dt>셔틀버스</dt>
+      <dd>신도림역 1번 출구 앞에서 호텔 셔틀버스 운행<br />(운행 시간은 예식 전 호텔에 확인해 주세요)</dd>
       <dt>버스</dt>
-      <dd>간선 146, 360, 740 · 지선 4412, 3412<br />‘그랜드홀 웨딩홀’ 정류장 하차</dd>
+      <dd>‘신도림역’ 정류장 하차<br />간선 160, 503, 600, 660, 662, N16<br />지선 6515, 6516, 6637, 6640A, 6640B, 6713</dd>
       <dt>자가용</dt>
-      <dd>내비게이션에 ‘그랜드홀 웨딩홀’ 검색<br />건물 지하 2~5층 주차장 2시간 무료</dd>
+      <dd>내비게이션에 ‘라마다서울신도림호텔’ 검색<br />호텔 지하 주차장 이용<br />주말에는 매우 혼잡하니 대중교통을 권해드립니다</dd>
     </dl>
   </section>
 
@@ -472,13 +521,18 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <div class="acc">
       <button type="button" data-acc>신랑측 계좌번호 <span class="arrow">▼</span></button>
       <div class="acc-body"><div class="acc-inner">
+        <!-- 계좌 정보는 아직 받지 못했습니다. 아래 은행명/계좌번호를 실제 값으로 바꿔주세요 (data-copy 도 함께). -->
         <div class="account">
-          <p class="info"><b>김민준 <small style="font-weight:400;color:var(--ink-soft)">(신랑)</small></b>국민은행 123456-01-123456</p>
-          <button class="copy-btn" data-copy="국민은행 123456-01-123456">복사</button>
+          <p class="info"><b>최영우 <small style="font-weight:400;color:var(--ink-soft)">(신랑)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
         </div>
         <div class="account">
-          <p class="info"><b>김철수 <small style="font-weight:400;color:var(--ink-soft)">(아버지)</small></b>신한은행 110-123-456789</p>
-          <button class="copy-btn" data-copy="신한은행 110-123-456789">복사</button>
+          <p class="info"><b>최종수 <small style="font-weight:400;color:var(--ink-soft)">(아버지)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
+        </div>
+        <div class="account">
+          <p class="info"><b>황경애 <small style="font-weight:400;color:var(--ink-soft)">(어머니)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
         </div>
       </div></div>
     </div>
@@ -486,13 +540,18 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
     <div class="acc">
       <button type="button" data-acc>신부측 계좌번호 <span class="arrow">▼</span></button>
       <div class="acc-body"><div class="acc-inner">
+        <!-- 계좌 정보는 아직 받지 못했습니다. 아래 은행명/계좌번호를 실제 값으로 바꿔주세요 (data-copy 도 함께). -->
         <div class="account">
-          <p class="info"><b>이서연 <small style="font-weight:400;color:var(--ink-soft)">(신부)</small></b>우리은행 1002-123-456789</p>
-          <button class="copy-btn" data-copy="우리은행 1002-123-456789">복사</button>
+          <p class="info"><b>장수린 <small style="font-weight:400;color:var(--ink-soft)">(신부)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
         </div>
         <div class="account">
-          <p class="info"><b>이정호 <small style="font-weight:400;color:var(--ink-soft)">(아버지)</small></b>하나은행 123-456789-01234</p>
-          <button class="copy-btn" data-copy="하나은행 123-456789-01234">복사</button>
+          <p class="info"><b>장상화 <small style="font-weight:400;color:var(--ink-soft)">(아버지)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
+        </div>
+        <div class="account">
+          <p class="info"><b>어정녀 <small style="font-weight:400;color:var(--ink-soft)">(어머니)</small></b>000-0000-0000</p>
+          <button class="copy-btn" data-copy="000-0000-0000">복사</button>
         </div>
       </div></div>
     </div>
@@ -509,10 +568,21 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
   </section>
 
   <footer>
-    <p class="names">김민준 &nbsp;·&nbsp; 이서연</p>
-    <p>2026. 11. 07</p>
+    <p class="names">최영우 &nbsp;·&nbsp; 장수린</p>
+    <p>2027. 07. 10</p>
   </footer>
 </div>
+
+<!-- ========== 배경음악 ========== -->
+<!-- 음악 파일은 music/bgm.mp3 에 넣어주세요. 파일명을 바꾸려면 아래 CONFIG.bgm 수정 -->
+<audio id="bgm" loop preload="none"></audio>
+<button id="bgm-btn" class="bgm-btn off" type="button" aria-label="배경음악 켜기/끄기" aria-pressed="false" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 17V4l11-2v13" />
+    <circle cx="6" cy="17" r="3" />
+    <circle cx="17" cy="15" r="3" />
+  </svg>
+</button>
 
 <div id="lightbox"><button class="close" aria-label="닫기">×</button><img alt="" /></div>
 <div id="toast"></div>
@@ -522,11 +592,14 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
    설정 — 여기만 고치면 됩니다
    ============================================================ */
 const CONFIG = {
-  weddingDate: '2026-11-07T13:00:00+09:00', // 예식 일시
-  groom: '김민준',
-  bride: '이서연',
-  venue: '그랜드홀 웨딩홀 3층 그랜드볼룸',
+  weddingDate: '2027-07-10T13:40:00+09:00', // 예식 일시
+  groom: '최영우',
+  bride: '장수린',
+  venue: '신도림 라마다호텔 5층 세인트그레이스홀',
+  dateText: '2027년 7월 10일 토요일 오후 1시 40분',
   kakaoJsKey: '',                            // 카카오 JS 키 (선택, README 참고)
+  bgm: 'music/bgm.mp3',                      // 배경음악 파일 (없으면 '' 로 두면 버튼이 안 보입니다)
+  bgmVolume: 0.35,                           // 음량 0 ~ 1
 };
 
 /* ---------- 스크롤 등장 애니메이션 ---------- */
@@ -619,7 +692,7 @@ document.getElementById('btn-kakao').addEventListener('click', () => {
       objectType: 'feed',
       content: {
         title: `${CONFIG.groom} ♥ ${CONFIG.bride} 결혼합니다`,
-        description: `2026년 11월 7일 토요일 오후 1시\n${CONFIG.venue}`,
+        description: `${CONFIG.dateText}\n${CONFIG.venue}`,
         imageUrl: document.querySelector('meta[property="og:image"]').content,
         link: { mobileWebUrl: location.href, webUrl: location.href },
       },
@@ -634,6 +707,64 @@ document.getElementById('btn-kakao').addEventListener('click', () => {
     copyText(location.href).then(() => toast('링크가 복사되었습니다'));
   }
 });
+
+/* ---------- 배경음악 ----------
+   모바일 브라우저는 '소리 나는 자동재생'을 막습니다.
+   그래서 ①일단 자동재생을 시도하고 ②막히면 화면을 처음 터치/클릭할 때 재생합니다. */
+(function bgm() {
+  if (!CONFIG.bgm) return;                   // 음악 파일이 없으면 버튼 자체를 띄우지 않음
+  const audio = document.getElementById('bgm');
+  const btn   = document.getElementById('bgm-btn');
+
+  audio.src = CONFIG.bgm;
+  audio.volume = CONFIG.bgmVolume;
+  btn.hidden = false;
+
+  // 파일이 없거나 재생할 수 없는 형식이면 버튼을 숨깁니다
+  audio.addEventListener('error', () => { btn.hidden = true; });
+
+  let userPaused = false;                    // 사용자가 직접 껐는지
+
+  function sync(playing) {
+    btn.classList.toggle('playing', playing);
+    btn.classList.toggle('off', !playing);
+    btn.setAttribute('aria-pressed', String(playing));
+  }
+  audio.addEventListener('play',  () => sync(true));
+  audio.addEventListener('pause', () => sync(false));
+
+  function tryPlay() {
+    if (userPaused) return Promise.resolve();
+    return audio.play().catch(() => {});     // 자동재생 차단은 조용히 무시
+  }
+
+  // ① 자동재생 시도
+  tryPlay();
+
+  // ② 차단됐을 경우 — 첫 상호작용에서 한 번만 재생
+  const kick = () => {
+    if (audio.paused) tryPlay();
+    ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach((ev) =>
+      window.removeEventListener(ev, kick)
+    );
+  };
+  ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach((ev) =>
+    window.addEventListener(ev, kick, { once: true, passive: true })
+  );
+
+  // 버튼으로 켜고 끄기
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (audio.paused) { userPaused = false; tryPlay(); }
+    else { userPaused = true; audio.pause(); }
+  });
+
+  // 다른 탭으로 가면 잠시 멈춤 (돌아오면 다시 재생)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) audio.pause();
+    else tryPlay();
+  });
+})();
 
 /* ---------- 토스트 ---------- */
 let toastTimer;

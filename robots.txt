@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+
+# 주의: GitHub Pages 프로젝트 사이트(.../wedding-invitation/)에서는 이 파일이
+# https://shuobyian.github.io/robots.txt 가 아니라 하위 경로로 서빙되어
+# 크롤러가 읽지 않습니다. 실제 색인 차단은 index.html 의 robots 메타 태그가 담당합니다.
+# 이 파일은 나중에 커스텀 도메인을 연결하면 그때부터 효력이 생깁니다.

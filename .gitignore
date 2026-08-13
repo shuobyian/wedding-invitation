@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# 사진 원본 (23MB) — 저장소에는 웹용 리사이즈본만 올립니다.
+# 원본은 로컬/외부에 따로 백업해 두세요.
+images/original/
