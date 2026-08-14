@@ -1284,7 +1284,10 @@ document.getElementById('btn-tmap')?.addEventListener('click', (e) => {
   setTimeout(() => {
     window.removeEventListener('pagehide', mark);
     document.removeEventListener('visibilitychange', mark);
-    if (!left && !document.hidden) window.location.href = fallback;
+    if (left || document.hidden) return;              // 티맵이 열렸음
+    // 앱이 없는 폰·PC — 왜 다른 지도가 열리는지 알려주고 넘깁니다
+    toast('티맵 앱이 없어 카카오맵 길찾기로 엽니다');
+    setTimeout(() => { window.location.href = fallback; }, 1100);
   }, 1200);
 });
 
