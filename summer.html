@@ -718,8 +718,29 @@ footer .wave-top { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%2
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%201200%2060%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20fill%3D%27%23f6fdfd%27%20d%3D%27M0%2C30%20C60%2C8%20110%2C8%20170%2C24%20C232%2C42%20276%2C42%20340%2C26%20C404%2C10%20452%2C10%20512%2C28%20C572%2C46%20620%2C46%20680%2C30%20C740%2C14%20790%2C14%20850%2C30%20C910%2C46%20960%2C46%201020%2C30%20C1080%2C14%201140%2C14%201200%2C30%20L1200%2C60%20L0%2C60%20Z%27%2F%3E%3C%2Fsvg%3E") repeat-x bottom / 1200px 34px;
 }
 .cover-photo { background-image: url('images/main.jpg'), linear-gradient(160deg, #bfe9f7 0%, #8ad9ea 52%, #6ad6c0 100%); }
-.cover-photo::after { background: linear-gradient(to bottom, rgba(8,58,82,.20) 0%, rgba(8,58,82,.02) 38%, rgba(6,44,64,.58) 100%); }
-.scroll-hint { bottom: 42px; }
+/* 글자가 놓이는 68% 지점을 가장 어둡게 — 아래는 배경 페이드가 덮습니다 */
+.cover-photo::after { background: linear-gradient(to bottom, rgba(8,58,82,.22) 0%, rgba(8,58,82,.04) 30%, rgba(6,44,64,.52) 68%, rgba(6,44,64,.38) 100%); }
+
+/* 커버 사진 아래쪽을 연한 아쿠아로 페이드 — 그 아래 파도로 마감됩니다 */
+.cover { padding-bottom: 170px; }
+.cover::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 210px; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(233,247,251, 0) 0%, rgba(233,247,251, .35) 38%, rgba(233,247,251, .78) 66%, #e9f7fb 92%);
+}
+.scroll-hint { background: rgba(30,145,184,.55); bottom: 52px; }
+/* 밝은 사진 위에서도 읽히도록 커버 영문 라벨에 그림자 */
+.cover-sub { text-shadow: 0 2px 12px rgba(4,38,56,.6); }
+@media (max-width: 479px) {
+  .cover { padding-bottom: 148px; }
+  .cover::after { height: 180px; }
+}
+@media (min-width: 900px) {
+  .cover { padding-bottom: 210px; }
+  .cover::after { height: 270px; }
+}
 
 /* 오로라 → 바닷빛 */
 .greeting::before { background: radial-gradient(circle, rgba(92,184,234,.20), rgba(92,184,234,0) 70%); }
@@ -933,21 +954,24 @@ footer { background: linear-gradient(135deg, #e6f6fb, #e4f7f2); }
     <div class="map-links">
       <a href="https://map.naver.com/p/search/라마다서울신도림호텔" target="_blank" rel="noopener">네이버지도</a>
       <a href="https://map.kakao.com/link/search/라마다서울신도림호텔" target="_blank" rel="noopener">카카오맵</a>
-      <a href="https://tmap.life/route?goalname=라마다서울신도림호텔" target="_blank" rel="noopener">티맵</a>
+      <!-- 티맵은 앱 전용 주소(tmap://)라 앱이 없으면 반응이 없습니다.
+           그래서 눌러도 앱이 안 열리면 data-fallback 주소(카카오맵 길찾기)로 넘겨줍니다. -->
+      <a id="btn-tmap" href="tmap://route?goalname=라마다서울신도림호텔&amp;goalx=126.8853578&amp;goaly=37.5065595"
+        data-fallback="https://map.kakao.com/link/to/라마다서울신도림호텔,37.5065595,126.8853578">티맵</a>
     </div>
 
     <div class="transport-layout">
       <figure class="transit-guide">
         <img src="images/transit-guide.png" loading="lazy"
           tabindex="0" role="button" aria-label="대중교통 약도 크게 보기"
-          alt="신도림역 1호선과 2호선, 1번 출구에서 호텔까지 도보 5분 동선, 신도림역 버스 정류장 안내 약도" />
+          alt="신도림역 1호선과 2호선, 1번 출구에서 경인로를 따라 서쪽으로 간 뒤 남쪽으로 꺾어 호텔에 이르는 도보 약 10분 동선, 신도림역 버스 정류장 안내 약도" />
       </figure>
 
       <dl class="transport">
         <dt>지하철</dt>
-        <dd>1 · 2호선 신도림역 1번 출구<br />신도림역 광장 방면 도보 5분</dd>
+        <dd>1 · 2호선 신도림역 1번 출구<br />경인로 따라 서쪽으로 도보 약 10분</dd>
         <dt>셔틀버스</dt>
-        <dd>신도림역 1번 출구 앞에서 호텔 셔틀버스 운행<br />(운행 시간은 예식 전 호텔에 확인해 주세요)</dd>
+        <dd>신도림역 1번 출구 앞에서 탑승<br />5분 간격 운행 · 다음 차가 도착하면 출발</dd>
         <dt>버스</dt>
         <dd>‘신도림역’ 정류장 하차<br />간선 160, 503, 600, 660, 662, N16<br />지선 6515, 6516, 6637, 6640A, 6640B, 6713</dd>
         <dt>자가용</dt>
@@ -1247,6 +1271,21 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
   btn.addEventListener('click', () => {
     copyText(btn.dataset.copy).then(() => toast('계좌번호가 복사되었습니다'));
   });
+});
+
+/* ---------- 티맵 열기 (앱이 없으면 카카오맵 길찾기로) ---------- */
+document.getElementById('btn-tmap')?.addEventListener('click', (e) => {
+  const fallback = e.currentTarget.dataset.fallback;
+  if (!fallback) return;
+  let left = false;                                   // 앱으로 넘어갔는지
+  const mark = () => { left = true; };
+  window.addEventListener('pagehide', mark, { once: true });
+  document.addEventListener('visibilitychange', mark, { once: true });
+  setTimeout(() => {
+    window.removeEventListener('pagehide', mark);
+    document.removeEventListener('visibilitychange', mark);
+    if (!left && !document.hidden) window.location.href = fallback;
+  }, 1200);
 });
 
 /* ---------- 링크 복사 / 공유 ---------- */

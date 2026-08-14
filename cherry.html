@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 청첩장 버전: 웨딩 스타일 (화이트 · 핑크 · 퍼플 · 플라워) -->
+<!-- 청첩장 버전: 벚꽃 스타일 (분홍 · 화이트) -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
@@ -18,7 +18,7 @@
 <meta property="og:description" content="2027년 7월 10일 토요일 오후 1시 40분 · 신도림 라마다호텔 5층 세인트그레이스홀" />
 <meta property="og:image" content="https://shuobyian.github.io/wedding-invitation/images/og.jpg" />
 <meta property="og:url" content="https://shuobyian.github.io/wedding-invitation/" />
-<meta name="theme-color" content="#fffbfd" />
+<meta name="theme-color" content="#fffafc" />
 <script>document.documentElement.classList.add('js');</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -662,21 +662,21 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
 }
 
 /* ============================================================
-   THEME — 웨딩 스타일 (화이트 · 핑크 · 퍼플)
+   THEME — 벚꽃 스타일 (분홍 · 화이트)
    이 블록의 값만 고치면 이 버전의 분위기가 바뀝니다
    ============================================================ */
 :root {
-  --bg:        #fffbfd;
-  --bg-alt:    #faf1f7;
-  --ink:       #3f3341;
-  --ink-soft:  #8d7a88;
-  --line:      #f1e0ea;
-  --point:     #c2789f;   /* 로즈 핑크 */
-  --point-soft:#e5b6ce;
-  --mint:      #d7a8dc;   /* 라일락 */
-  --sky:       #a98ed5;   /* 퍼플 */
+  --bg:        #fffafc;
+  --bg-alt:    #fbeef5;
+  --ink:       #41323b;
+  --ink-soft:  #8f7a85;
+  --line:      #f5dfe9;
+  --point:     #d4718f;        /* 메인 포인트 색 */
+  --point-soft:#f0b9cc;
+  --mint:      #f3a8bf;      /* 보조 색 */
+  --sky:       #c78fc0;      /* 강조 색 */
   --radius:    20px;
-  --shadow:    0 18px 46px rgba(178,116,150,.14);
+  --shadow:    0 18px 46px rgba(190,110,140,.14);
 }
 
 /* 라틴 문자는 세리프 이탤릭으로 — 청첩장 특유의 우아한 결 */
@@ -689,16 +689,38 @@ footer .names { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
 .cover-sub { font-size: 16px; letter-spacing: .3em; }
 
 /* 배경 / 오로라 */
-.alt { background: linear-gradient(160deg, #fdf5fa 0%, #f6eefa 100%); }
-.greeting::before { background: radial-gradient(circle, rgba(194,120,159,.18), rgba(194,120,159,0) 70%); }
-.date-section::before { background: radial-gradient(circle, rgba(169,142,213,.18), rgba(169,142,213,0) 70%); }
-.date-section::after { background: radial-gradient(circle, rgba(215,168,220,.22), rgba(215,168,220,0) 70%); }
-footer::before { background: radial-gradient(circle, rgba(194,120,159,.18), rgba(169,142,213,.08) 45%, transparent 72%); }
+.alt { background: linear-gradient(160deg, #fef5f9 0%, #faecf3 100%); }
+.greeting::before { background: radial-gradient(circle, rgba(212,113,143,.18), rgba(212,113,143,0) 70%); }
+.date-section::before { background: radial-gradient(circle, rgba(199,143,192,.18), rgba(199,143,192,0) 70%); }
+.date-section::after { background: radial-gradient(circle, rgba(243,168,191,.22), rgba(243,168,191,0) 70%); }
+footer::before { background: radial-gradient(circle, rgba(212,113,143,.18), rgba(199,143,192,.08) 45%, transparent 72%); }
 
 /* 커버 */
-.cover-photo { background-image: url('images/main.jpg'), linear-gradient(160deg, #f0c6d9 0%, #d9bbe8 55%, #b9a4e0 100%); }
-.cover-photo::after { background: linear-gradient(to bottom, rgba(72,42,62,.18) 0%, rgba(72,42,62,.02) 38%, rgba(54,32,48,.58) 100%); }
+.cover-photo { background-image: url('images/main.jpg'), linear-gradient(160deg, #f9cfdd 0%, #f2b6cd 55%, #dda6cb 100%); }
+/* 글자가 놓이는 68% 지점을 가장 어둡게 — 아래는 배경 페이드가 덮습니다 */
+.cover-photo::after { background: linear-gradient(to bottom, rgba(68,34,48,.20) 0%, rgba(68,34,48,.04) 30%, rgba(68,34,48,.50) 68%, rgba(68,34,48,.36) 100%); }
 .cover-names { letter-spacing: .02em; }
+
+/* 커버 사진 아래쪽을 배경색으로 페이드 — 사진과 인사말 사이 경계선을 없앱니다 */
+.cover { padding-bottom: 170px; }
+.cover::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 210px; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(255,250,252, 0) 0%, rgba(255,250,252, .35) 38%, rgba(255,250,252, .78) 66%, var(--bg) 92%);
+}
+.scroll-hint { background: rgba(212,113,143,.55); }
+/* 밝은 사진 위에서도 읽히도록 커버 영문 라벨에 그림자 */
+.cover-sub { text-shadow: 0 2px 12px rgba(68,34,48,.6); }
+@media (max-width: 479px) {
+  .cover { padding-bottom: 148px; }
+  .cover::after { height: 180px; }
+}
+@media (min-width: 900px) {
+  .cover { padding-bottom: 210px; }
+  .cover::after { height: 270px; }
+}
 
 /* 섹션 라벨 아래 꽃 한 송이 */
 .greeting .label::after,
@@ -706,12 +728,12 @@ footer::before { background: radial-gradient(circle, rgba(194,120,159,.18), rgba
 .venue .label::after {
   content: '';
   display: block;
-  width: 22px; height: 22px;
+  width: 24px; height: 24px;
   margin: 10px auto 0;
-  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20fill%3D%27%23eebdd2%27%20opacity%3D%271.0%27%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%2710.6%27%20fill%3D%27%23f6d9a6%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20fill%3D%27%23f7c3d5%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
 }
 
-/* 인사말 코너 플로럴 */
+/* 인사말 · 푸터 코너 부케 */
 .greeting::after,
 footer::after {
   content: '';
@@ -719,7 +741,7 @@ footer::after {
   z-index: 0;
   pointer-events: none;
   width: 190px; height: 190px;
-  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23c6dcc7%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M6%206%20C52%2042%2072%2084%2086%20132%27%2F%3E%3Cpath%20d%3D%27M6%206%20C62%2024%20100%2048%20130%2086%27%2F%3E%3Cpath%20d%3D%27M6%206%20C26%2054%2034%2096%2040%20142%27%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D%2738%27%20cy%3D%2744%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2840%2038%2044%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2756%27%20cy%3D%2770%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2834%2056%2070%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2774%27%20cy%3D%27104%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2828%2074%20104%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2744%27%20cy%3D%2726%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-30%2044%2026%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2744%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-24%2072%2044%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%27104%27%20cy%3D%2766%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-18%20104%2066%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2722%27%20cy%3D%2748%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2872%2022%2048%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2792%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2878%2030%2092%29%27%20fill%3D%27%23d3e5d0%27%2F%3E%3Cg%20fill%3D%27%23eebdd2%27%20opacity%3D%271.0%27%3E%3Cellipse%20cx%3D%2786%27%20cy%3D%27122.2%27%20rx%3D%2713.2%27%20ry%3D%2718.6%27%20transform%3D%27rotate%2812%2086%20136%29%27%2F%3E%3Cellipse%20cx%3D%2786%27%20cy%3D%27122.2%27%20rx%3D%2713.2%27%20ry%3D%2718.6%27%20transform%3D%27rotate%2884%2086%20136%29%27%2F%3E%3Cellipse%20cx%3D%2786%27%20cy%3D%27122.2%27%20rx%3D%2713.2%27%20ry%3D%2718.6%27%20transform%3D%27rotate%28156%2086%20136%29%27%2F%3E%3Cellipse%20cx%3D%2786%27%20cy%3D%27122.2%27%20rx%3D%2713.2%27%20ry%3D%2718.6%27%20transform%3D%27rotate%28228%2086%20136%29%27%2F%3E%3Cellipse%20cx%3D%2786%27%20cy%3D%27122.2%27%20rx%3D%2713.2%27%20ry%3D%2718.6%27%20transform%3D%27rotate%28300%2086%20136%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2786%27%20cy%3D%27136%27%20r%3D%277.2%27%20fill%3D%27%23f6d9a6%27%2F%3E%3Cg%20fill%3D%27%23cdb6e6%27%20opacity%3D%270.95%27%3E%3Cellipse%20cx%3D%27132%27%20cy%3D%2779.0%27%20rx%3D%2710.6%27%20ry%3D%2714.9%27%20transform%3D%27rotate%28-20%20132%2090%29%27%2F%3E%3Cellipse%20cx%3D%27132%27%20cy%3D%2779.0%27%20rx%3D%2710.6%27%20ry%3D%2714.9%27%20transform%3D%27rotate%2852%20132%2090%29%27%2F%3E%3Cellipse%20cx%3D%27132%27%20cy%3D%2779.0%27%20rx%3D%2710.6%27%20ry%3D%2714.9%27%20transform%3D%27rotate%28124%20132%2090%29%27%2F%3E%3Cellipse%20cx%3D%27132%27%20cy%3D%2779.0%27%20rx%3D%2710.6%27%20ry%3D%2714.9%27%20transform%3D%27rotate%28196%20132%2090%29%27%2F%3E%3Cellipse%20cx%3D%27132%27%20cy%3D%2779.0%27%20rx%3D%2710.6%27%20ry%3D%2714.9%27%20transform%3D%27rotate%28268%20132%2090%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%27132%27%20cy%3D%2790%27%20r%3D%275.8%27%20fill%3D%27%23f6d9a6%27%2F%3E%3Cg%20fill%3D%27%23eebdd2%27%20opacity%3D%270.9%27%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%27139.3%27%20rx%3D%278.4%27%20ry%3D%2711.8%27%20transform%3D%27rotate%2830%2040%20148%29%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%27139.3%27%20rx%3D%278.4%27%20ry%3D%2711.8%27%20transform%3D%27rotate%28102%2040%20148%29%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%27139.3%27%20rx%3D%278.4%27%20ry%3D%2711.8%27%20transform%3D%27rotate%28174%2040%20148%29%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%27139.3%27%20rx%3D%278.4%27%20ry%3D%2711.8%27%20transform%3D%27rotate%28246%2040%20148%29%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%27139.3%27%20rx%3D%278.4%27%20ry%3D%2711.8%27%20transform%3D%27rotate%28318%2040%20148%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2740%27%20cy%3D%27148%27%20r%3D%274.6%27%20fill%3D%27%23f6d9a6%27%2F%3E%3Cg%20fill%3D%27%23cdb6e6%27%20opacity%3D%270.85%27%3E%3Cellipse%20cx%3D%27112%27%20cy%3D%27122.0%27%20rx%3D%275.7%27%20ry%3D%278.1%27%20transform%3D%27rotate%288%20112%20128%29%27%2F%3E%3Cellipse%20cx%3D%27112%27%20cy%3D%27122.0%27%20rx%3D%275.7%27%20ry%3D%278.1%27%20transform%3D%27rotate%2880%20112%20128%29%27%2F%3E%3Cellipse%20cx%3D%27112%27%20cy%3D%27122.0%27%20rx%3D%275.7%27%20ry%3D%278.1%27%20transform%3D%27rotate%28152%20112%20128%29%27%2F%3E%3Cellipse%20cx%3D%27112%27%20cy%3D%27122.0%27%20rx%3D%275.7%27%20ry%3D%278.1%27%20transform%3D%27rotate%28224%20112%20128%29%27%2F%3E%3Cellipse%20cx%3D%27112%27%20cy%3D%27122.0%27%20rx%3D%275.7%27%20ry%3D%278.1%27%20transform%3D%27rotate%28296%20112%20128%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%27112%27%20cy%3D%27128%27%20r%3D%273.1%27%20fill%3D%27%23f6d9a6%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23cbab9a%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M6%206%20C52%2042%2072%2084%2086%20132%27%2F%3E%3Cpath%20d%3D%27M6%206%20C62%2024%20100%2048%20130%2086%27%2F%3E%3Cpath%20d%3D%27M6%206%20C26%2054%2034%2096%2040%20142%27%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D%2738%27%20cy%3D%2744%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2840%2038%2044%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2756%27%20cy%3D%2770%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2834%2056%2070%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2774%27%20cy%3D%27104%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2828%2074%20104%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2744%27%20cy%3D%2726%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-30%2044%2026%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2744%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-24%2072%2044%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%27104%27%20cy%3D%2766%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%28-18%20104%2066%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2722%27%20cy%3D%2748%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2872%2022%2048%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2792%27%20rx%3D%275%27%20ry%3D%2712%27%20transform%3D%27rotate%2878%2030%2092%29%27%20fill%3D%27%23d5e5cd%27%2F%3E%3Cg%20transform%3D%27translate%2886%20136%29%20scale%280.620%29%20rotate%2812%29%20translate%28-50%20-50%29%27%20opacity%3D%271.0%27%3E%3Cg%20fill%3D%27%23f7c3d5%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate%28132%2090%29%20scale%280.500%29%20rotate%28-20%29%20translate%28-50%20-50%29%27%20opacity%3D%270.95%27%3E%3Cg%20fill%3D%27%23ee9dbc%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate%2840%20148%29%20scale%280.400%29%20rotate%2830%29%20translate%28-50%20-50%29%27%20opacity%3D%270.92%27%3E%3Cg%20fill%3D%27%23f7c3d5%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate%28112%20128%29%20scale%280.280%29%20rotate%288%29%20translate%28-50%20-50%29%27%20opacity%3D%270.85%27%3E%3Cg%20fill%3D%27%23ee9dbc%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate%28152%20126%29%20scale%280.220%29%20rotate%28-14%29%20translate%28-50%20-50%29%27%20opacity%3D%270.8%27%3E%3Cg%20fill%3D%27%23f7c3d5%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center / contain no-repeat;
   opacity: .72;
 }
 .greeting::after { left: -44px; top: -34px; transform: rotate(-6deg); }
@@ -729,30 +751,30 @@ footer { isolation: isolate; }
 /* 구분선 가운데 꽃 */
 .orn {
   display: block;
-  width: 20px; height: 20px;
-  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20fill%3D%27%23eebdd2%27%20opacity%3D%271.0%27%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2729.8%27%20rx%3D%2719.4%27%20ry%3D%2727.3%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%2710.6%27%20fill%3D%27%23f6d9a6%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  width: 24px; height: 24px;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20fill%3D%27%23f7c3d5%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%280%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2872%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28144%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28216%2050%2050%29%27%2F%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%28288%2050%2050%29%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%274.6%27%20fill%3D%27%23fbe3b4%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%2836%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28108%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28180%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28252%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2739%27%20r%3D%272%27%20transform%3D%27rotate%28324%2050%2050%29%27%20fill%3D%27%23e8879f%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
 }
 .ornament-rule { font-size: 0; width: min(100%, 210px); }
 
 /* 카드 / 버튼 */
-.parent-side-title { background: linear-gradient(90deg, rgba(194,120,159,.10), rgba(215,168,220,.10), rgba(169,142,213,.10)); }
-.icon-btn { border-color: rgba(194,120,159,.26); background: #fdf6fa; }
+.parent-side-title { background: linear-gradient(90deg, rgba(212,113,143,.10), rgba(243,168,191,.10), rgba(199,143,192,.10)); }
+.icon-btn { border-color: rgba(212,113,143,.26); background: #fdf6f9; }
 .icon-btn svg { width: 17px; height: 17px; display: block; }
-.icon-btn:hover { border-color: var(--point); background: #fbeef5; }
-.icon-btn:active { background: #f6e4ee; }
-.cal { border-color: rgba(194,120,159,.16); }
-.cal td.wed::before { box-shadow: 0 6px 16px rgba(194,120,159,.28); }
-.ticket-stub { background: linear-gradient(100deg, rgba(194,120,159,.07), rgba(215,168,220,.07), rgba(169,142,213,.07)); }
-footer { background: linear-gradient(135deg, #fbf0f6, #f5eefb); }
-.bgm-btn { box-shadow: 0 4px 14px rgba(170,110,145,.18); }
-#toast { background: rgba(63,45,58,.94); }
+.icon-btn:hover { border-color: var(--point); background: #fceef4; }
+.icon-btn:active { background: #f8e2ec; }
+.cal { border-color: rgba(212,113,143,.16); }
+.cal td.wed::before { box-shadow: 0 6px 16px rgba(212,113,143,.28); }
+.ticket-stub { background: linear-gradient(100deg, rgba(212,113,143,.07), rgba(243,168,191,.07), rgba(199,143,192,.07)); }
+footer { background: linear-gradient(135deg, #fdf0f6, #f8eef5); }
+.bgm-btn { box-shadow: 0 4px 14px rgba(190,110,140,.18); }
+#toast { background: rgba(68,34,48,.94); }
 
 /* 흩날리는 꽃잎 */
 .petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 70; }
 .petals i {
   position: absolute; top: -12vh;
   width: 13px; height: 13px;
-  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cellipse%20cx%3D%2750%27%20cy%3D%2750%27%20rx%3D%2726%27%20ry%3D%2744%27%20transform%3D%27rotate%2824%2050%2050%29%27%20fill%3D%27%23eebdd2%27%2F%3E%3Cpath%20d%3D%27M50%208%20C36%2034%2036%2066%2050%2092%27%20stroke%3D%27%23dc9cbb%27%20stroke-width%3D%272%27%20fill%3D%27none%27%20opacity%3D%27.5%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cpath%20d%3D%27M50%2052%20C40%2046%2033%2034%2035%2022%20C36%2015%2042%2013%2046%2019%20L50%2026%20L54%2019%20C58%2013%2064%2015%2065%2022%20C67%2034%2060%2046%2050%2052%20Z%27%20transform%3D%27rotate%2820%2050%2050%29%20translate%280%20-4%29%20scale%281%201.3%29%27%20fill%3D%27%23f7c3d5%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
   animation: petal-fall linear infinite;
 }
 @keyframes petal-fall {
@@ -935,21 +957,24 @@ footer { background: linear-gradient(135deg, #fbf0f6, #f5eefb); }
     <div class="map-links">
       <a href="https://map.naver.com/p/search/라마다서울신도림호텔" target="_blank" rel="noopener">네이버지도</a>
       <a href="https://map.kakao.com/link/search/라마다서울신도림호텔" target="_blank" rel="noopener">카카오맵</a>
-      <a href="https://tmap.life/route?goalname=라마다서울신도림호텔" target="_blank" rel="noopener">티맵</a>
+      <!-- 티맵은 앱 전용 주소(tmap://)라 앱이 없으면 반응이 없습니다.
+           그래서 눌러도 앱이 안 열리면 data-fallback 주소(카카오맵 길찾기)로 넘겨줍니다. -->
+      <a id="btn-tmap" href="tmap://route?goalname=라마다서울신도림호텔&amp;goalx=126.8853578&amp;goaly=37.5065595"
+        data-fallback="https://map.kakao.com/link/to/라마다서울신도림호텔,37.5065595,126.8853578">티맵</a>
     </div>
 
     <div class="transport-layout">
       <figure class="transit-guide">
         <img src="images/transit-guide.png" loading="lazy"
           tabindex="0" role="button" aria-label="대중교통 약도 크게 보기"
-          alt="신도림역 1호선과 2호선, 1번 출구에서 호텔까지 도보 5분 동선, 신도림역 버스 정류장 안내 약도" />
+          alt="신도림역 1호선과 2호선, 1번 출구에서 경인로를 따라 서쪽으로 간 뒤 남쪽으로 꺾어 호텔에 이르는 도보 약 10분 동선, 신도림역 버스 정류장 안내 약도" />
       </figure>
 
       <dl class="transport">
         <dt>지하철</dt>
-        <dd>1 · 2호선 신도림역 1번 출구<br />신도림역 광장 방면 도보 5분</dd>
+        <dd>1 · 2호선 신도림역 1번 출구<br />경인로 따라 서쪽으로 도보 약 10분</dd>
         <dt>셔틀버스</dt>
-        <dd>신도림역 1번 출구 앞에서 호텔 셔틀버스 운행<br />(운행 시간은 예식 전 호텔에 확인해 주세요)</dd>
+        <dd>신도림역 1번 출구 앞에서 탑승<br />5분 간격 운행 · 다음 차가 도착하면 출발</dd>
         <dt>버스</dt>
         <dd>‘신도림역’ 정류장 하차<br />간선 160, 503, 600, 660, 662, N16<br />지선 6515, 6516, 6637, 6640A, 6640B, 6713</dd>
         <dt>자가용</dt>
@@ -1246,6 +1271,21 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
   btn.addEventListener('click', () => {
     copyText(btn.dataset.copy).then(() => toast('계좌번호가 복사되었습니다'));
   });
+});
+
+/* ---------- 티맵 열기 (앱이 없으면 카카오맵 길찾기로) ---------- */
+document.getElementById('btn-tmap')?.addEventListener('click', (e) => {
+  const fallback = e.currentTarget.dataset.fallback;
+  if (!fallback) return;
+  let left = false;                                   // 앱으로 넘어갔는지
+  const mark = () => { left = true; };
+  window.addEventListener('pagehide', mark, { once: true });
+  document.addEventListener('visibilitychange', mark, { once: true });
+  setTimeout(() => {
+    window.removeEventListener('pagehide', mark);
+    document.removeEventListener('visibilitychange', mark);
+    if (!left && !document.hidden) window.location.href = fallback;
+  }, 1200);
 });
 
 /* ---------- 링크 복사 / 공유 ---------- */
